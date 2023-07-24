@@ -58,11 +58,14 @@ async function onload_1() {
 
     let savedData = localStorage.getItem('savedData');
     if (savedData) {
-        let dataObject = JSON.parse(savedData);
-
-        document.getElementById('api1').value = dataObject.data1;
-        document.getElementById('api2').value = dataObject.data2;
-        document.getElementById('api3').value = dataObject.data3;
+        try {
+            let dataObject = JSON.parse(savedData);
+            document.getElementById('api1').value = dataObject.data1;
+            document.getElementById('api2').value = dataObject.data2;
+            document.getElementById('api3').value = dataObject.data3;
+        } catch (error) {
+            console.error("解析本地資料時發生錯誤：", error);
+        }
     } else {
         if (api_1 !== "" && api_2 !== "" && api_3 !== "") {
             let dataObject = {
@@ -70,7 +73,11 @@ async function onload_1() {
                 data2: api_2,
                 data3: api_3
             };
-            localStorage.setItem('savedData', JSON.stringify(dataObject));
+            try {
+                localStorage.setItem('savedData', JSON.stringify(dataObject));
+            } catch (error) {
+                console.error("儲存資料到本地時發生錯誤：", error);
+            }
         }
     }
 
