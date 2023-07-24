@@ -65,9 +65,9 @@ async function onload_1() {
     }else{
         if(api_1 != "" && api_2 != "" && api_3 != ""){
             let dataObject = {
-                data1: data1,
-                data2: data2,
-                data3: data3
+                data1: api_1,
+                data2: api_2,
+                data3: api_3
             }
             localStorage.setItem('savedData', JSON.stringify(dataObject))         
         }   
