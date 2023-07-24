@@ -59,19 +59,24 @@ async function onload_1() {
     let savedData = localStorage.getItem('savedData');
     if (savedData) {
         let dataObject = JSON.parse(savedData);
+
         document.getElementById('api1').value = dataObject.data1;
         document.getElementById('api2').value = dataObject.data2;
         document.getElementById('api3').value = dataObject.data3;
-    }else{
-        if(api_1 != "" && api_2 != "" && api_3 != ""){
+    } else {
+        if (api_1 !== "" && api_2 !== "" && api_3 !== "") {
             let dataObject = {
                 data1: api_1,
                 data2: api_2,
                 data3: api_3
-            }
-            localStorage.setItem('savedData', JSON.stringify(dataObject))         
-        }   
+            };
+            localStorage.setItem('savedData', JSON.stringify(dataObject));
+        }
     }
+
+    api_1 = document.getElementById("api1").value
+    api_2 = document.getElementById("api2").value
+    api_3 = document.getElementById("api3").value
 
     const data_3 = await data_9("oee_img")
     let number_a = 0
